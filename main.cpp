@@ -7,7 +7,9 @@ using namespace std;
 
 int main(int numArguments, char **arguments)
 {
-    int numTimesteps = 1.0e09;
+    double years    = 10.0;
+    double dt        = 1.0e-08;
+    int numTimesteps = years/dt;
     if(numArguments >= 2) numTimesteps = atoi(arguments[1]);
 
     SolarSystem solarSystem;
@@ -44,17 +46,16 @@ int main(int numArguments, char **arguments)
     cout << "Total energy before: " << solarSystem.totalEnergy() << endl;
     cout << "Total angular momentum before: " << solarSystem.angularMomentum() << endl;
 
-    double dt = 1.0e-07;
     Verlet integrator(dt);
     for(int timestep=0; timestep<numTimesteps; timestep++)
     {
-        for(int i = 0; i < (int) bodies.size(); i++)
-        {
-            CelestialBody &body = bodies[i]; // Reference to this body
-            cout << "The position of " << body.objectName << " is " << body.position << " Length: " << body.position.length() << endl;
-        }
+//        for(int i = 0; i < (int) bodies.size(); i++)
+//        {
+//            CelestialBody &body = bodies[i]; // Reference to this body
+//            cout << "The position of " << body.objectName << " is " << body.position << " Length: " << body.position.length() << endl;
+//        }
         integrator.integrateOneStep(solarSystem);
-        solarSystem.writeToFile("positions_system.xyz");
+        solarSystem.writeToFile("positions.xyz");
     }
 
     solarSystem.calculateRelativisticForcesAndEnergy();

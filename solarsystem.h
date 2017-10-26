@@ -33,6 +33,7 @@ public:
 private:
     std::vector<CelestialBody> m_bodies;
     std::ofstream m_file;
+    vec3 perihelionRange = vec3(1.0e10,1.0e10,1.0e10);
     double m_kineticEnergy;
     double m_potentialEnergy;
     double m_perihelionAngle;

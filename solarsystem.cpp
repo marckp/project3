@@ -59,7 +59,7 @@ void SolarSystem::calculateRelativisticForcesAndEnergy()
     m_ang_mom.zeros();
     CelestialBody &Sun     = m_bodies[0];
     CelestialBody &Mercury = m_bodies[1];
-    cout << "Mercury mass: " << Mercury.mass << endl;
+    //cout << "Mercury mass: " << Mercury.mass << endl;
 
     for(CelestialBody &body : m_bodies)
     {
@@ -73,9 +73,10 @@ void SolarSystem::calculateRelativisticForcesAndEnergy()
     double dr                   = Mercury.position.length();
     double theta                = calculatePerihelionAngle(dr,Mercury.position);
     double G                    = 4 * pow(M_PI,2);
-    vec3 tempForce              = G * Sun.mass * Mercury.mass * Mercury.position/pow(dr,3);
-    relativisticCorrectionFactor(dr*dr,m_ang_mom.lengthSquared()/pow(Mercury.mass,2),speedOfLightAU_Year * speedOfLightAU_Year);
+    double RCF                  = relativisticCorrectionFactor(dr*dr,m_ang_mom.lengthSquared()/pow(Mercury.mass,2),speedOfLightAU_Year * speedOfLightAU_Year);
+    vec3 tempForce              = -G * RCF * Sun.mass * Mercury.mass * Mercury.position/pow(dr,3);
     Mercury.force               = tempForce;
+    Sun.force.zeros();
     m_potentialEnergy           = -G * Sun.mass * Mercury.mass/dr;
     m_kineticEnergy             = 0.5 * Mercury.mass * Mercury.velocity.lengthSquared();
 }
@@ -83,10 +84,15 @@ void SolarSystem::calculateRelativisticForcesAndEnergy()
 //Calculate Periheilion Angle for Mercury
 double SolarSystem::calculatePerihelionAngle(double current_distance_AU,vec3 current_solar_position)
 {
-   double mercury_perihelion_angle = -M_PI/2.0;
-   if (current_distance_AU <= 0.30750)
+   // Preserve the last 3 mercury radii in a sliding window, compare the middle value
+   // first two. If the middle value is smallest, the perihelion condition has been found
+   double mercury_perihelion_angle = 0.0;
+   perihelionRange[0]   = perihelionRange[1];
+   perihelionRange[1]   = perihelionRange[2];
+   perihelionRange[2]   = current_distance_AU;
+   if (perihelionRange[1] < perihelionRange[0]  & perihelionRange[1] < perihelionRange[2])
    {
-       mercury_perihelion_angle += atan2(current_solar_position.x(),current_solar_position.y());
+       mercury_perihelion_angle = atan(current_solar_position.y()/current_solar_position.x());
        cout << "Perihelion angle and position: " << setprecision(10) << mercury_perihelion_angle  << " 0.3075 " << " " << setprecision(10) << current_distance_AU << " " << setprecision(10) << endl;
    }
    return mercury_perihelion_angle;
@@ -132,7 +138,7 @@ vec3 SolarSystem::calculateAngularMomentum(CelestialBody &body)
 
 double SolarSystem::relativisticCorrectionFactor(double distance_square, double norm_square_angular_mass,double lightspeedsquared)
 {
-    double RCF = 1.0 + (3.0 * norm_square_angular_mass)/(lightspeedsquared*distance_square);
+    double RCF = 1.0 + (3.0 * norm_square_angular_mass)/(lightspeedsquared * distance_square);
     return RCF;
 }
 
