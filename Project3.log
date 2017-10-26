@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  16 OCT 2017 09:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  24 OCT 2017 07:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -526,8 +526,7 @@ Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 \RaggedLeftParindent=\skip81
 \RaggedRightParindent=\skip82
 \JustifyingParindent=\skip83
-)
-No file Project3.aux.
+) (./Project3.aux)
 \openout1 = `Project3.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 88.
@@ -545,7 +544,7 @@ LaTeX Font Info:    ... okay on input line 88.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 88.
 LaTeX Font Info:    ... okay on input line 88.
 LaTeX Font Info:    Try loading font information for T1+lmr on input line 88.
-(/usr/local/texlive/2017/texmf-dist/tex/latex/lm/t1lmr.fd
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -610,11 +609,12 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 88.
 LaTeX Info: Redefining \pageref on input line 88.
 LaTeX Info: Redefining \nameref on input line 88.
+
+(./Project3.out) (./Project3.out)
 \@outlinefile=\write4
 \openout4 = `Project3.out'.
 
-
-ABD: EverySelectfont initializing macros
+ ABD: EverySelectfont initializing macros
 LaTeX Info: Redefining \selectfont on input line 88.
 LaTeX Font Info:    Try loading font information for OT1+lmr on input line 142.
 
@@ -784,6 +784,8 @@ RS)
  ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2016/05/21 v2.44 Cross-referencing by name of section
 gettitlestring.sty    2016/05/16 v1.5 Cleanup title references (HO)
+Project3.out
+Project3.out
   ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
@@ -797,21 +799,15 @@ gettitlestring.sty    2016/05/16 v1.5 Cleanup title references (HO)
  ***********
 
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 372.
-
-Package rerunfilecheck Warning: File `Project3.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Project3.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+Package rerunfilecheck Info: File `Project3.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 372.
  ) 
 Here is how much of TeX's memory you used:
- 9834 strings out of 492995
- 147516 string characters out of 6132704
- 290068 words of memory out of 5000000
- 13076 multiletter control sequences out of 15000+600000
+ 9841 strings out of 492995
+ 147610 string characters out of 6132704
+ 290172 words of memory out of 5000000
+ 13077 multiletter control sequences out of 15000+600000
  47785 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,15n,43p,1005b,402s stack positions out of 5000i,500n,10000p,200000b,80000s

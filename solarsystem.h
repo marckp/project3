@@ -10,14 +10,23 @@ class SolarSystem
 {
 public:
     SolarSystem();
-    void createCelestialBody(vec3 position, vec3 velocity, double mass);
+    // Speed of light in AU/Year
+   const double speedOfLightAU_Year   = 63239.7263;
+    //const double mercury_perihelion_AU  = 0.3075;
+
+    void createCelestialBody(vec3 position, vec3 velocity, double mass, std::string objectName);
     void calculateForcesAndEnergy();
+    void calculateRelativisticForcesAndEnergy();
+    vec3 calculateAngularMomentum(CelestialBody &body);
+    double relativisticCorrectionFactor(double distance_square, double norm_square_angular_mass,double lightspeedsquared);
+    double calculatePerihelionAngle(double current_distance_AU,vec3 current_solar_position);
     int numberOfBodies() const;
 
     double totalEnergy() const;
     double potentialEnergy() const;
     double kineticEnergy() const;
-    double solarSystemCenterOfMass() const;
+    vec3 angularMomentum() const;
+    double perihelionAngle() const;
     void writeToFile(std::string filename);
     std::vector<CelestialBody> &bodies();
 
@@ -26,6 +35,8 @@ private:
     std::ofstream m_file;
     double m_kineticEnergy;
     double m_potentialEnergy;
+    double m_perihelionAngle;
+    vec3 m_ang_mom;
 };
 
 #endif // SOLARSYSTEM_H

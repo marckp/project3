@@ -16,4 +16,3 @@ HEADERS += \
     vec3.h \
     euler.h \
     verlet.h
-

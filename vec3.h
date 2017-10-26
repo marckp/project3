@@ -108,4 +108,5 @@ inline vec3 operator/(vec3 lhs, vec3 rhs) {
     return lhs;
 }
 
+
 #endif // VEC3_H

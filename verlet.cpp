@@ -7,11 +7,12 @@ m_dt(dt)
 
 void Verlet::integrateOneStep(SolarSystem &system)
 {
-    system.calculateForcesAndEnergy();
+    system.calculateRelativisticForcesAndEnergy();
 
-    for(CelestialBody &body : system.bodies()) {
-        vec3 a = body.force / body.mass;
-        body.velocity += a* m_dt;
-        body.position += body.velocity*m_dt;
+    for(CelestialBody &body : system.bodies())
+    {
+        vec3 a          = body.force / body.mass;
+        body.velocity   += a* m_dt;
+        body.position   += body.velocity*m_dt;
     }
 };
