@@ -1,0 +1,72 @@
+\documentclass[10pt,showpacs,preprintnumbers,footinbib,amsmath,amssymb,aps,prl,twocolumn,groupedaddress,superscriptaddress,showkeys]{revtex4-1}
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{fancyref}
+
+\begin{document}
+
+
+\title[CPP2]{Computational Physics Project 3 part 3g}
+
+\author{Marc Kidwell Pestana}
+\affiliation{Computation Physics Geniuses}
+
+\maketitle
+\paragraph{Project 3g): The perihelion precession of Mercury.}
+In this section of Project 3 we used our Solarsystem model to test for the  observed perihelion 
+precession of Mercury as explained by the general theory of relativity. We used a numerical correction factor to adjust the Newtonian gravitational force law to account for effects on the orbit Mercury as predicted by the general theory of relativity. We obtained a perihelion shift consist with  the observations made of Mercuries orbit.
+
+\section{Background and Theoretical Models}
+An important test of the general theory of relativity was to compare its prediction for the
+perihelion precession of Mercury to the observed value. The observed value of the perihelion precession, when
+all classical effects (such as the perturbation of the orbit due to gravitational attraction from the other planets) are
+subtracted, is $43''$ ($43$ arc seconds) per century.
+
+Closed elliptical orbits are a special feature of the Newtonian $1/r^2$ force. In general, any correction to the
+pure $1/r^2$ behaviour will lead to an orbit which is not closed, i.e.~after one complete orbit around the Sun, the
+planet will not be at exactly the same position as it started. If the correction is small, then each orbit around
+the Sun will be almost the same as the classical ellipse, and the orbit can be thought of as an ellipse whose 
+orientation in space slowly rotates. In other words, the perihelion of the ellipse slowly precesses around the Sun.
+
+\section{Methods and Algorithms}
+We studied the orbit of Mercury around the Sun with our model implemented as a C++ program. adding a general relativistic correction to the Newtonian
+gravitational force, so that the force becomes
+\[
+F_G = \frac{GM_\mathrm{Sun}M_\mathrm{Mercury}}{r^2}\left[1 + \frac{3l^2}{r^2c^2}\right]
+\]
+where $M_\mathrm{Mercury}$ is the mass of Mercury, $r$ is the distance between Mercury and the Sun, $l=|\vec{r}\times\vec{v}|$ is the magnitude of Mercury's orbital angular momentum per unit mass, 
+and $c$ is the speed of light in vacuum.
+
+We ran a simulation 
+over one century of Mercury's orbit around the Sun with no other planets present, starting with the Sun fixed at the origin of our coordinates and Mercury at perihelion on the $x$ axis. Our inital runs ran using the unadjusted Newtonian force law and verified that the model produced a fixed elliptical orbit by computing for each orbit the perihelion angle
+Check then the value of the perihelion angle $\theta_\mathrm{p}$, using
+\[
+\tan \theta_\mathrm{p} = \frac{y_\mathrm{p}}{x_\mathrm{p}}
+\]
+where $x_\mathrm{p}$ ($y_\mathrm{p}$) is the $x$ ($y$) position of Mercury at perihelion, i.e.~at the point
+where Mercury is at its closest to the Sun. We used the speed of Mercury at perihelion as $12.44\,\mathrm{AU}/\mathrm{yr}$, and that the distance to the Sun
+at perihelion as $0.3075\,\mathrm{AU}$. We used a time period of 1 earth year to observed the non-relativistic  orbit of mercury and did find a small oscillation in the perihelion angle that was blah blah blah.\newline
+We then ran the calculation 
+You need to make sure that the time resolution used in your simulation
+is sufficient, for example by checking that the perihelion precession you get with a pure Newtonian force is at least
+a few orders of magnitude smaller than the observed perihelion precession of Mercury.
+\section{Results}
+\paragraph{Classical perihelion baseline results}
+We used a total period of 1 earth years and a time increment of $10^{-05}$ for a total of 
+blah blah blah
+\section{Conclusions and Discussion}
+\paragraph{Blah blah blah}
+blah blah blah
+\begin{thebibliography}{99}
+\bibitem{taut}\href{http://prola.aps.org/abstract/PRA/v48/i5/p3561_1}{M. Taut, Phys. Rev. A 48, 3561 (1993)}
+%\bibitem{jensen} M.~H.̃~Jensen, Computational~Physics(11.09.2017) \url{github.com/CompPhysics/ComputationalPhysics/blob/master/doc/Projects/2017/ReportExamplesLatexstyle/reportexample.tex}
+\end{thebibliography}
+
+\end{document}

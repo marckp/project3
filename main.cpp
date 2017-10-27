@@ -7,15 +7,15 @@ using namespace std;
 
 int main(int numArguments, char **arguments)
 {
-    double years    = 10.0;
-    double dt        = 1.0e-08;
+    double years    = 100.0;
+    double dt        = 1.0e-07;
     int numTimesteps = years/dt;
     if(numArguments >= 2) numTimesteps = atoi(arguments[1]);
 
     SolarSystem solarSystem;
     // We create new bodies like this. Note that the createCelestialBody function returns a reference to the newly created body
     // This can then be used to modify properties or print properties of the body if desired
-    // Use with: solarSystem.createCelestialBody( position, velocity, mass );
+    // Use with: solarSystem.createCelestialBody ( position, velocity, mass )
     // We don't need to store the reference, but just call the function without a left hand side
 
     double M_sun = 1.99e30;//kg

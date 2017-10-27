@@ -90,10 +90,10 @@ double SolarSystem::calculatePerihelionAngle(double current_distance_AU,vec3 cur
    perihelionRange[0]   = perihelionRange[1];
    perihelionRange[1]   = perihelionRange[2];
    perihelionRange[2]   = current_distance_AU;
-   if (perihelionRange[1] < perihelionRange[0]  & perihelionRange[1] < perihelionRange[2])
+   if (perihelionRange[1] < perihelionRange[0] & perihelionRange[1] < perihelionRange[2])
    {
        mercury_perihelion_angle = atan(current_solar_position.y()/current_solar_position.x());
-       cout << "Perihelion angle and position: " << setprecision(10) << mercury_perihelion_angle  << " 0.3075 " << " " << setprecision(10) << current_distance_AU << " " << setprecision(10) << endl;
+       cout << setprecision(10) << mercury_perihelion_angle  << " 0.3075 " << " " << setprecision(10) << current_distance_AU << " " << setprecision(10) << endl;
    }
    return mercury_perihelion_angle;
 }
